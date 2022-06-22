@@ -13,5 +13,5 @@ interface ApiService {
 
 
 
-    fun listPost(@Path("sign") sign: String,@Path("day") day:String,@Query("rapidapi-key") rapidapikey:String ="d81e046ef8mshd733e396e070d3dp1d5eb9jsn43059a236fcb" ): Call<List<HoroscopeModel>>
+    fun listPost(@Path("sign") sign: String,@Path("day") day:String,@Query("rapidapi-key") rapidapikey:String ="d81e046ef8mshd733e396e070d3dp1d5eb9jsn43059a236fcb" ): Call<HoroscopeModel>
 }

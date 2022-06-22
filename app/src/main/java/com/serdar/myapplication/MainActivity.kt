@@ -23,39 +23,45 @@ class MainActivity : AppCompatActivity() {
         postService = RetrofitInstance.getClient().create(ApiService::class.java)
 
 
-        val post = postService.listPost("virgo","tomorrow")
-        post.enqueue(object : Callback<List<HoroscopeModel>> {
+
+        val post = postService.listPost("virgo","tomorrow","d81e046ef8mshd733e396e070d3dp1d5eb9jsn43059a236fcb")
+
+            post.enqueue(object : Callback<HoroscopeModel> {
 
 
-            override fun onFailure(call: Call<List<HoroscopeModel>>, t: Throwable) {
-                Toast.makeText(applicationContext, t.message.toString(), Toast.LENGTH_LONG).show()
+                override fun onFailure(call: Call<HoroscopeModel>, t: Throwable) {
+                    Toast.makeText(applicationContext, t.message.toString(), Toast.LENGTH_LONG).show()
 
-        }
+                }
 
-            override fun onResponse(call: Call<List<HoroscopeModel>>, response: Response<List<HoroscopeModel>>) {
-
-
-
-                    if (response.isSuccessful) {
+                override fun onResponse(call: Call<HoroscopeModel>, response: Response<HoroscopeModel>) {
 
 
 
-                      Toast.makeText(this@MainActivity, "Data", Toast.LENGTH_SHORT).show()
-
-                        postList = (response.body() as MutableList<HoroscopeModel>)
-                        textView.text=response.body().toString()
-
-                    }else{
-                      Toast.makeText(this@MainActivity, "No Data", Toast.LENGTH_SHORT).show()
+                        if (response.isSuccessful ) {
 
 
-                    }
+
+                            Toast.makeText(this@MainActivity, "Data", Toast.LENGTH_SHORT).show()
+
+                            // postList = (response.body() as MutableList<HoroscopeModel>)
+                            textView8.text=response.body().toString()
+
+                        }else{
+                            Toast.makeText(this@MainActivity, "No Data", Toast.LENGTH_SHORT).show()
+
+
+                        }
+
+
+
                 }
 
 
-        })
+
+            })
+        }
     }
 
 
 
-}
